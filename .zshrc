@@ -1,6 +1,10 @@
-### Added by Zplugin's installer
+echo "Loading .zshrc"
+export LC_ALL='en_US.UTF-8'
+export LANG='en_US.UTF-8'
+export LANGUAGE='en_US.UTF-8'
 
-source '/Users/dmitry/.zplugin/bin/zplugin.zsh'
+### Added by Zplugin's installer
+source $HOME/.zplugin/bin/zplugin.zsh
 autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
 ### End of Zplugin's installer chunk
@@ -8,7 +12,7 @@ autoload -Uz _zplugin
 export TERM='xterm-256color'
 
 
-source /Users/dmitry/.zsh-tools/zaw/zaw.zsh
+source $HOME/.zsh-tools/zaw/zaw.zsh
 
 # Load OMZ Git library
 zplugin snippet OMZ::lib/git.zsh
@@ -201,8 +205,8 @@ setopt pushd_to_home            # `pushd` = `pushd $HOME`
 #zplg ice svn silent wait'!0' atload'prompt smiley'
 #zplg snippet PZT::modules/prompt
 ###
-# zplugin ice wait'1' atload'_zsh_autosuggest_start'
-# zplugin light zsh-users/zsh-autosuggestions
+zplugin ice wait'1' atload'_zsh_autosuggest_start'
+zplugin light zsh-users/zsh-autosuggestions
 ###
 
 ###GIT EXTRAS START###
@@ -237,6 +241,8 @@ zplugin ice wait'2' lucid svn
 zplugin snippet OMZ::plugins/ubuntu
 zplugin ice wait'2' lucid svn
 zplugin snippet OMZ::plugins/systemd
+zplugin ice wait'2' lucid svn
+zplugin snippet OMZ::plugins/debian
 zplugin ice wait'2' lucid svn
 zplugin snippet OMZ::plugins/systemadmin
 zplugin ice wait'2' lucid svn

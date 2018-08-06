@@ -1,10 +1,18 @@
+echo "Loading .zshrc"
+export LC_ALL='en_US.UTF-8'
+export LANG='en_US.UTF-8'
+export LANGUAGE='en_US.UTF-8'
+
 ### Added by Zplugin's installer
-source '/home/dmitry/.zplugin/bin/zplugin.zsh'
+source $HOME/.zplugin/bin/zplugin.zsh
 autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
 ### End of Zplugin's installer chunk
 
-source /home/dmitry/.zsh-tools/zaw/zaw.zsh
+export TERM='xterm-256color'
+
+
+source $HOME/.zsh-tools/zaw/zaw.zsh
 
 # Load OMZ Git library
 zplugin snippet OMZ::lib/git.zsh
@@ -101,6 +109,10 @@ bindkey "^[[4~" end-of-line
 bindkey "^[[5~" up-line-or-history
 bindkey "^[[6~" down-line-or-history
 bindkey "^?" backward-delete-char
+# alt + left/right: jump one word backward/forward
+bindkey '^[^[[D' emacs-backward-word
+bindkey '^[^[[C' emacs-forward-word
+
 
 setopt MAGIC_EQUAL_SUBST
 setopt BSD_ECHO
@@ -193,8 +205,8 @@ setopt pushd_to_home            # `pushd` = `pushd $HOME`
 #zplg ice svn silent wait'!0' atload'prompt smiley'
 #zplg snippet PZT::modules/prompt
 ###
-# zplugin ice wait'1' atload'_zsh_autosuggest_start'
-# zplugin light zsh-users/zsh-autosuggestions
+zplugin ice wait'1' atload'_zsh_autosuggest_start'
+zplugin light zsh-users/zsh-autosuggestions
 ###
 
 ###GIT EXTRAS START###
@@ -229,6 +241,8 @@ zplugin ice wait'2' lucid svn
 zplugin snippet OMZ::plugins/ubuntu
 zplugin ice wait'2' lucid svn
 zplugin snippet OMZ::plugins/systemd
+zplugin ice wait'2' lucid svn
+zplugin snippet OMZ::plugins/debian
 zplugin ice wait'2' lucid svn
 zplugin snippet OMZ::plugins/systemadmin
 zplugin ice wait'2' lucid svn
@@ -277,6 +291,12 @@ zplugin ice wait'2' lucid svn
 zplugin snippet OMZ::plugins/go
 zplugin ice wait'2' lucid svn
 zplugin snippet OMZ::plugins/gitignore
+
+# zplugin ice svn wait"0" lucid atinit"local ZSH=\$PWD" \
+#     atclone"mkdir -p plugins; cd plugins; ln -sfn ../. osx"
+zplugin ice wait'2' lucid svn
+zplugin snippet OMZ::plugins/osx
+
 # Load theme from OMZ
 # zplugin snippet OMZ::themes/dstufft.zsh-theme
 # E.
