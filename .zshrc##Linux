@@ -4,7 +4,7 @@ autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
 ### End of Zplugin's installer chunk
 
-source /Users/dmitry/.zsh-tools/zaw/zaw.zsh
+source /home/dmitry/.zsh-tools/zaw/zaw.zsh
 
 # Load OMZ Git library
 zplugin snippet OMZ::lib/git.zsh

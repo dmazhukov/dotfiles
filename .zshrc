@@ -5,6 +5,9 @@ autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
 ### End of Zplugin's installer chunk
 
+export TERM='xterm-256color'
+
+
 source /Users/dmitry/.zsh-tools/zaw/zaw.zsh
 
 # Load OMZ Git library
@@ -102,6 +105,10 @@ bindkey "^[[4~" end-of-line
 bindkey "^[[5~" up-line-or-history
 bindkey "^[[6~" down-line-or-history
 bindkey "^?" backward-delete-char
+# alt + left/right: jump one word backward/forward
+bindkey '^[^[[D' emacs-backward-word
+bindkey '^[^[[C' emacs-forward-word
+
 
 setopt MAGIC_EQUAL_SUBST
 setopt BSD_ECHO
