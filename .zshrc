@@ -10,8 +10,6 @@ autoload -Uz _zplugin
 ### End of Zplugin's installer chunk
 
 export TERM='xterm-256color'
-
-
 source $HOME/.zsh-tools/zaw/zaw.zsh
 
 # Load OMZ Git library
@@ -69,12 +67,16 @@ setopt FLOW_SHELL
 export CLICOLOR=1
 if [ "${ZSH_UNAME}" = "Darwin" ]; then
       # export LSCOLORS="exfxcxdxbxegedabagacad"
-    export LSCOLORS="ExGxFxDxCxDxDxhbhdacEc"
+#     export LSCOLORS="ExGxFxDxCxDxDxhbhdacEc"
+#     LS_COLORS="${LSCOLORS}"
+    export LS_COLORS="di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=01;05;37;41:mi=01;05;37;41:su=37;41:sg=30;43:tw=30;42:ow=34;42:st=37;44:ex=01;32"
     LS_COLORS="${LSCOLORS}"
+
 else
     export LS_COLORS="di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=01;05;37;41:mi=01;05;37;41:su=37;41:sg=30;43:tw=30;42:ow=34;42:st=37;44:ex=01;32"
 fi
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*:default' list-colors ${LS_COLORS}
+# zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 # }}}
 
 # Share zsh histories {{{
@@ -96,6 +98,7 @@ alias sz='source ~/.zshrc'
 command which which>/dev/null 2>&1 && {
     alias which="$(command which which)"
 }
+alias f='fzf -e'
 #############################################
 
 bindkey "^[OB" down-line-or-search
@@ -145,7 +148,8 @@ setopt promptsubst
 ###########
 # Completion configuration
 
-zstyle ':completion:*' completer _expand _complete _ignored _match _correct _approximate _prefix
+zstyle ':completion:*' completer _expand _complete _ignored _match _correct _approximate _prefix _gnu-geberic #_prefix _describe _gnu-generic
+#zstyle ':completion:*' completer _describe
 zstyle ':completion:*' expand prefix suffix
 zstyle ':completion:*' file-sort name
 # zstyle ':completion:*' insert-unambiguous false
@@ -155,10 +159,12 @@ zstyle ':completion:*' match-original only
 zstyle ':completion:*' max-errors 6 numeric
 # zstyle ':completion:*' menu select=1
 zstyle ':completion:*' original true
-zstyle ':completion:*' verbose true
+# zstyle ':completion:*' verbose true
 
 zstyle ':completion:*' gain-privileges 
 zstyle ':completion:*' group-name ''
+zstyle ':completion:*' auto-description
+
 
 
 setopt hash_list_all            # hash everything before completion
