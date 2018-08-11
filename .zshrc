@@ -298,8 +298,8 @@ zplugin snippet OMZ::plugins/go
 zplugin ice wait'2' lucid svn
 zplugin snippet OMZ::plugins/gitignore
 
-# zplugin ice svn wait"0" lucid atinit"local ZSH=\$PWD" \
-#     atclone"mkdir -p plugins; cd plugins; ln -sfn ../. osx"
+zplugin ice svn wait"0" lucid atinit"local ZSH=\$PWD" \
+    atclone"mkdir -p plugins; cd plugins; ln -sfn ../. osx"
 zplugin ice wait'2' lucid svn
 zplugin snippet OMZ::plugins/osx
 
