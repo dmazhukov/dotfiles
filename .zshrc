@@ -148,7 +148,7 @@ setopt promptsubst
 ###########
 # Completion configuration
 
-zstyle ':completion:*' completer _expand _complete _ignored _match _correct _approximate _prefix _gnu-geberic #_prefix _describe _gnu-generic
+zstyle ':completion:*' completer _expand _complete _ignored _match _correct _describe _approximate _prefix _gnu-generic #_prefix _describe _gnu-generic
 #zstyle ':completion:*' completer _describe
 zstyle ':completion:*' expand prefix suffix
 zstyle ':completion:*' file-sort name
@@ -317,6 +317,7 @@ zplugin light danihodovic/steeef
 
 zplugin load zdharma/history-search-multi-word
 
+zplugin ice compile"*.lzui"
 zplugin load zdharma/zui
 zplugin light zdharma/zplugin-crasis
 
@@ -329,6 +330,9 @@ zplugin ice from"gh-r" as"program"; zplugin load junegunn/fzf-bin
 #automatically narrows down the releases by grepping uname etc.
 
 zplugin ice from"gh-r" bpick"*linux*" as"program" mv"docker* -> docker-compose"; zplugin load docker/compose
+
+zplugin ice as"program" pick"$ZPFX/bin/git-*" make"PREFIX=$ZPFX"
+zplugin light tj/git-extras
 
 zplugin ice pick"h.sh"
 zplugin light paoloantinori/hhighlighter
