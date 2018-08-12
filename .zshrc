@@ -16,6 +16,11 @@ source $HOME/.zsh-tools/zaw/zaw.zsh
 zplugin snippet OMZ::lib/git.zsh
 zplugin snippet OMZ::lib/completion.zsh
 zplugin snippet OMZ::lib/compfix.zsh
+zplugin snippet OMZ::lib/misc.zsh
+zplugin snippet OMZ::lib/termsupport.zsh
+zplugin snippet OMZ::lib/theme-and-appearance.zsh
+zplugin snippet OMZ::lib/history.zsh
+zplugin snippet OMZ::lib/functions.zsh
 
 # Load Git plugin from OMZ
 zplugin ice wait'0' atload"unalias grv" lucid
@@ -86,20 +91,6 @@ SAVEHIST=50000
 setopt inc_append_history
 setopt share_history
 # }}}
-#############################################
-#               Aliases
-#############################################
-#
-# source zshrc
-alias sz='source ~/.zshrc'
-
-# General {{{
-# I hate the 'whence' function
-command which which>/dev/null 2>&1 && {
-    alias which="$(command which which)"
-}
-alias f='fzf -e'
-#############################################
 
 bindkey "^[OB" down-line-or-search
 bindkey "^[OC" forward-char
@@ -229,78 +220,76 @@ zplugin light k4rthik/git-cal
 ###GIT EXTRAS END###
 
 # D.
-zplugin ice wait'2' lucid
+zplugin ice wait'0' lucid
 zplugin snippet OMZ::plugins/colored-man-pages/colored-man-pages.plugin.zsh
-zplugin ice wait'2' lucid svn
+zplugin ice wait'0' lucid svn
 zplugin snippet OMZ::plugins/history
-zplugin ice wait'2' lucid svn
+zplugin ice wait'0' lucid svn
 zplugin snippet OMZ::plugins/z
-zplugin ice wait'2' lucid svn
+zplugin ice wait'0' lucid svn
 zplugin snippet OMZ::plugins/brew
-zplugin ice wait'2' lucid svn
-zplugin snippet OMZ::plugins/common-aliases
-zplugin ice wait'2' lucid svn
+zplugin ice wait'0' lucid svn
 zplugin snippet OMZ::plugins/colored-man-pages
-zplugin ice wait'2' lucid svn
+zplugin ice wait'0' lucid svn
 zplugin snippet OMZ::plugins/transfer
-zplugin ice wait'2' lucid svn
+zplugin ice wait'0' lucid svn
 zplugin snippet OMZ::plugins/ubuntu
-zplugin ice wait'2' lucid svn
+zplugin ice wait'0' lucid svn
 zplugin snippet OMZ::plugins/systemd
-zplugin ice wait'2' lucid svn
+zplugin ice wait'0' lucid svn
 zplugin snippet OMZ::plugins/debian
-zplugin ice wait'2' lucid svn
+zplugin ice wait'0' lucid svn
 zplugin snippet OMZ::plugins/systemadmin
-zplugin ice wait'2' lucid svn
+zplugin ice wait'0' lucid svn
 zplugin snippet OMZ::plugins/colorize
-zplugin ice wait'2' lucid svn
+zplugin ice wait'0' lucid svn
 zplugin snippet OMZ::plugins/command-not-found
-zplugin ice wait'2' lucid svn
+zplugin ice wait'0' lucid svn
 zplugin snippet OMZ::plugins/sudo
-# zplugin ice wait'2' lucid svn
+# zplugin ice wait'0' lucid svn
 # zplugin snippet OMZ::plugins/themes
-zplugin ice wait'2' lucid svn
+zplugin ice wait'0' lucid svn
 zplugin snippet OMZ::plugins/pip
-zplugin ice wait'2' lucid svn
+zplugin ice wait'0' lucid svn
 zplugin snippet OMZ::plugins/python
-zplugin ice wait'2' lucid svn
+zplugin ice wait'0' lucid svn
 zplugin snippet OMZ::plugins/pyenv
-zplugin ice wait'2' lucid svn
+zplugin ice wait'0' lucid svn
 zplugin snippet OMZ::plugins/virtualenv
-zplugin ice wait'2' lucid svn
+zplugin ice wait'0' lucid svn
 zplugin snippet OMZ::plugins/dotenv
-zplugin ice wait'2' lucid svn
+zplugin ice wait'0' lucid svn
 zplugin snippet OMZ::plugins/docker-compose
-zplugin ice wait'2' lucid svn
+zplugin ice wait'0' lucid svn
 zplugin snippet OMZ::plugins/docker-machine
-zplugin ice wait'2' lucid svn
+zplugin ice wait'0' lucid svn
 zplugin snippet OMZ::plugins/nmap
-zplugin ice wait'2' lucid svn
+zplugin ice wait'0' lucid svn
 zplugin snippet OMZ::plugins/postgres
-zplugin ice wait'2' lucid svn
+zplugin ice wait'0' lucid svn
 zplugin snippet OMZ::plugins/compleat
-# zplugin ice wait'2' lucid svn
+# zplugin ice wait'0' lucid svn
 # zplugin snippet OMZ::plugins/aws
-zplugin ice wait'2' lucid svn
+zplugin ice wait'0' lucid svn
 zplugin snippet OMZ::plugins/battery
-zplugin ice wait'2' lucid svn
+zplugin ice wait'0' lucid svn
 zplugin snippet OMZ::plugins/fancy-ctrl-z
-zplugin ice wait'2' lucid svn
+zplugin ice wait'0' lucid svn
 zplugin snippet OMZ::plugins/terraform
-zplugin ice wait'2' lucid svn
+zplugin ice wait'0' lucid svn
 zplugin snippet OMZ::plugins/minikube
-zplugin ice wait'2' lucid svn
+zplugin ice wait'0' lucid svn
 zplugin snippet OMZ::plugins/kubectl
-zplugin ice wait'2' lucid svn
+zplugin ice wait'0' lucid svn
 zplugin snippet OMZ::plugins/man
-zplugin ice wait'2' lucid svn
+zplugin ice wait'0' lucid svn
 zplugin snippet OMZ::plugins/go
-zplugin ice wait'2' lucid svn
+zplugin ice wait'0' lucid svn
 zplugin snippet OMZ::plugins/gitignore
 
 zplugin ice svn wait"0" lucid atinit"local ZSH=\$PWD" \
     atclone"mkdir -p plugins; cd plugins; ln -sfn ../. osx"
-zplugin ice wait'2' lucid svn
+zplugin ice wait'0' lucid svn
 zplugin snippet OMZ::plugins/osx
 
 # Load theme from OMZ
@@ -334,14 +323,19 @@ zplugin ice from"gh-r" bpick"*linux*" as"program" mv"docker* -> docker-compose";
 zplugin ice as"program" pick"$ZPFX/bin/git-*" make"PREFIX=$ZPFX"
 zplugin light tj/git-extras
 
-zplugin ice pick"h.sh"
+zplugin ice wait'0' pick"h.sh"
 zplugin light paoloantinori/hhighlighter
 
-zplugin ice wait"0" blockf
+zplugin ice wait'0' 
 zplugin light djui/alias-tips
 
-zplugin ice wait"0" blockf
+zplugin ice wait'0' 
 zplugin light zsh-users/zsh-completions
+
+source /Users/dmitry/.zplugin/plugins/tj---git-extras/etc/git-extras-completion.zsh
+
+zplugin ice wait'0' lucid svn
+zplugin snippet OMZ::plugins/common-aliases
 
 zplugin ice wait'1' atload'_zsh_autosuggest_start'
 zplugin light zsh-users/zsh-autosuggestions
@@ -349,6 +343,26 @@ zplugin light zsh-users/zsh-autosuggestions
 zplugin ice wait'1' atinit"zpcompinit; zpcdreplay"
 zplugin light zdharma/fast-syntax-highlighting
 
+# zplugin ice wait'1' atload'_zsh_autosuggest_start'
+# zplugin light zsh-users/zsh-autosuggestions
+# zplugin ice wait'4' atinit"zpcompinit; zpcdreplay"
+# zplugin light zsh-users/zsh-syntax-highlighting
+
 ##########ZPLUGIN END########################
 
 zstyle ':completion:*:*:mpv:*' group-name ''
+#############################################
+#               Aliases
+#############################################
+
+#
+# source zshrc
+alias sz='source ~/.zshrc'
+
+# General {{{
+# I hate the 'whence' function
+command which which>/dev/null 2>&1 && {
+    alias which="$(command which which)"
+}
+alias f='fzf -e'
+#############################################
