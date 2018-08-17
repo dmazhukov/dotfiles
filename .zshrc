@@ -9,6 +9,7 @@ autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
 ### End of Zplugin's installer chunk
 
+#
 export TERM='xterm-256color'
 source $HOME/.zsh-tools/zaw/zaw.zsh
 
@@ -27,6 +28,8 @@ zplugin ice wait'0' atload"unalias grv" lucid
 zplugin snippet OMZ::plugins/git/git.plugin.zsh
 zplugin snippet PZT::modules/helper/init.zsh
 zplugin cdclear -q # <- forget completions provided up to this moment
+
+
 
 #setopt promptsubst
 COMPLETION_WAITING_DOTS="true"
@@ -333,6 +336,8 @@ zplugin light djui/alias-tips
 
 zplugin ice wait'0' 
 zplugin light zsh-users/zsh-completions
+zplugin ice svn
+zplugin light endaaman/lxd-completion-zsh
 
 source /Users/dmitry/.zplugin/plugins/tj---git-extras/etc/git-extras-completion.zsh
 
